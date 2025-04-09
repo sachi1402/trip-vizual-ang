@@ -1,0 +1,20 @@
+<!-- fix Argument of type 'Event' is not assignable to parameter of type '{ start: string; end: string; -->
+<!--   level: number; type: string; }'. -->
+<!--   Type 'Event' is missing the following properties from type '{ start: string; end: string; level: number; type: string; }': start, end, level, type -->
+<!-- 
+
+ -->
+
+
+<app-trip-input [tripAdded]="addTrip($event)"></app-trip-input>
+
+
+<div class="trip-container">
+  <div *ngFor="let trip of trips" [ngClass]="'level-' + trip.level" class="trip-line">
+    <span>{{ getShortName(trip.start) }}</span>
+    <span class="arrow" *ngIf="trip.type === 'continued'">───</span>
+    <span class="arrow" *ngIf="trip.type === 'non-continued'">→</span>
+    <span class="arrow" *ngIf="trip.type === 'duplicate'">===</span>
+    <span>{{ getShortName(trip.end) }}</span>
+  </div>
+</div>
